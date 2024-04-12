@@ -5,6 +5,7 @@ import {
 } from "@ant-design/icons";
 import { Layout, Menu, theme } from "antd";
 import { createElement } from "react";
+import { Outlet } from "react-router-dom";
 const { Header, Content, Footer, Sider } = Layout;
 
 const items = [
@@ -21,7 +22,7 @@ const items = [
 export default function MainLayout() {
   return (
     <>
-      <Layout>
+      <Layout style={{ height: "100vh" }}>
         <Sider
           breakpoint="lg"
           collapsedWidth="0"
@@ -32,7 +33,18 @@ export default function MainLayout() {
             console.log(collapsed, type);
           }}
         >
-          <div className="demo-logo-vertical" />
+          <div
+            style={{
+              color: "white",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              height: "4rem",
+              fontSize: "12px",
+            }}
+          >
+            <h1>PH UNIVERSITY</h1>
+          </div>
           <Menu
             theme="dark"
             mode="inline"
@@ -50,7 +62,7 @@ export default function MainLayout() {
               }}
             >
               {/* Main content as children */}
-              <p>the main content start here</p>
+              <Outlet />
             </div>
           </Content>
           <Footer style={{ textAlign: "center" }}>
